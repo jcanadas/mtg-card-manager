@@ -39,17 +39,17 @@ router.put('/wishlist/:scryfallId', requireAuth, async (req, res) => {
   try {
     const { scryfallId } = req.params;
     const updates = req.body;
-    
+
     const wishlist = await Wishlist.findOne({ userId: req.user.id });
     if (!wishlist) {
       return res.status(404).json({ error: 'Wishlist not found' });
     }
-    
+
     const cardIndex = wishlist.cards.findIndex(c => c.scryfallId === scryfallId);
     if (cardIndex === -1) {
       return res.status(404).json({ error: 'Card not found' });
     }
-    
+
     wishlist.cards[cardIndex] = { ...wishlist.cards[cardIndex].toObject(), ...updates };
     await wishlist.save();
     res.json(wishlist.cards);
@@ -62,12 +62,12 @@ router.put('/wishlist/:scryfallId', requireAuth, async (req, res) => {
 router.delete('/wishlist/:scryfallId', requireAuth, async (req, res) => {
   try {
     const { scryfallId } = req.params;
-    
+
     const wishlist = await Wishlist.findOne({ userId: req.user.id });
     if (!wishlist) {
       return res.status(404).json({ error: 'Wishlist not found' });
     }
-    
+
     wishlist.cards = wishlist.cards.filter(c => c.scryfallId !== scryfallId);
     await wishlist.save();
     res.json(wishlist.cards);
@@ -122,17 +122,17 @@ router.put('/decks/:id/cards/:scryfallId', requireAuth, async (req, res) => {
   try {
     const { id, scryfallId } = req.params;
     const updates = req.body;
-    
+
     const deck = await Deck.findOne({ _id: id, userId: req.user.id });
     if (!deck) {
       return res.status(404).json({ error: 'Deck not found' });
     }
-    
+
     const cardIndex = deck.cards.findIndex(c => c.scryfallId === scryfallId);
     if (cardIndex === -1) {
       return res.status(404).json({ error: 'Card not found' });
     }
-    
+
     deck.cards[cardIndex] = { ...deck.cards[cardIndex].toObject(), ...updates };
     await deck.save();
     res.json(deck);
@@ -189,12 +189,12 @@ router.post('/purchases', requireAuth, async (req, res) => {
 router.delete('/purchases/:scryfallId', requireAuth, async (req, res) => {
   try {
     const { scryfallId } = req.params;
-    
+
     const purchases = await Purchase.findOne({ userId: req.user.id });
     if (!purchases) {
       return res.status(404).json({ error: 'Purchases not found' });
     }
-    
+
     purchases.cards = purchases.cards.filter(c => c.scryfallId !== scryfallId);
     await purchases.save();
     res.json(purchases.cards);

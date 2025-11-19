@@ -13,7 +13,7 @@ const purchasedStore = usePurchasedStore()
 
 onMounted(async () => {
   await authStore.checkAuth()
-  
+
   // Load user data if authenticated
   if (authStore.user) {
     await Promise.all([
@@ -67,8 +67,13 @@ main {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-screen p {

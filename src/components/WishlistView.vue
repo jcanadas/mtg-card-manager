@@ -4,7 +4,8 @@
             <router-link to="/" class="nav-tab">My Wishlist</router-link>
             <router-link to="/purchased" class="nav-tab">Purchase History</router-link>
             <div class="user-menu">
-                <img v-if="authStore.user?.avatar" :src="authStore.user.avatar" :alt="authStore.user.displayName" class="user-avatar" />
+                <img v-if="authStore.user?.avatar" :src="authStore.user.avatar" :alt="authStore.user.displayName"
+                    class="user-avatar" />
                 <span class="user-name">{{ authStore.user?.displayName }}</span>
                 <button @click="handleLogout" class="logout-button">Logout</button>
             </div>
@@ -177,7 +178,7 @@
                         </div>
                     </td>
                     <td>{{ card.setName }} ({{ card.set.toUpperCase() }})<br /><span class="collector-num">#{{
-                            card.collectorNumber }}</span></td>
+                        card.collectorNumber }}</span></td>
                     <td>
                         <select :value="card.deckId" @change="updateDeck(card.id, $event)" class="deck-select-small">
                             <option :value="undefined">No deck</option>
@@ -519,8 +520,8 @@
                                 <div class="deck-info">
                                     <ManaSymbols :colors="deck.colorIdentity" />
                                     <strong>{{ deck.name }}</strong>
-                                    <a v-if="deck.url" :href="deck.url" target="_blank"
-                                        class="moxfield-link-small" title="View on Moxfield">🔗 Moxfield</a>
+                                    <a v-if="deck.url" :href="deck.url" target="_blank" class="moxfield-link-small"
+                                        title="View on Moxfield">🔗 Moxfield</a>
                                     <span class="card-count">{{ getCardCountForDeck(deck._id) }} cards</span>
                                 </div>
                                 <div class="deck-actions">

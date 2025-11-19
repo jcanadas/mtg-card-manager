@@ -32,12 +32,14 @@
             <div class="name-badges">
               <strong>{{ card.name }}</strong>
               <span v-if="card.isFoil" class="foil-badge-small">FOIL</span>
-              <span v-if="card.frameEffects && card.frameEffects.length > 0 && card.frameEffects[0]" class="special-badge-small">
+              <span v-if="card.frameEffects && card.frameEffects.length > 0 && card.frameEffects[0]"
+                class="special-badge-small">
                 {{ formatFrameEffect(card.frameEffects[0]) }}
               </span>
             </div>
           </td>
-          <td>{{ card.setName }} ({{ card.set.toUpperCase() }})<br/><span class="collector-num">#{{ card.collectorNumber }}</span></td>
+          <td>{{ card.setName }} ({{ card.set.toUpperCase() }})<br /><span class="collector-num">#{{
+            card.collectorNumber }}</span></td>
           <td>{{ formatOrderSource(card.orderedFrom || 'N/A') }}</td>
           <td>{{ formatDate(card.orderedAt) }}</td>
           <td>{{ formatDate(card.receivedAt) }}</td>
@@ -51,7 +53,8 @@
             <span class="no-price">N/A</span>
           </td>
           <td class="actions-cell">
-            <button @click="removeFromHistory(card.scryfallId)" class="icon-button remove" title="Remove from history">🗑️</button>
+            <button @click="removeFromHistory(card.scryfallId)" class="icon-button remove"
+              title="Remove from history">🗑️</button>
           </td>
         </tr>
       </tbody>

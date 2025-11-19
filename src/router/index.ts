@@ -28,7 +28,7 @@ const router = createRouter({
 // Navigation guard to check authentication
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore()
-  
+
   // Wait for auth check if not done yet
   if (authStore.loading) {
     await authStore.checkAuth()

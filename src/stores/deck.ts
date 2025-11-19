@@ -25,14 +25,14 @@ export const useDeckStore = defineStore('deck', () => {
     try {
       // Fetch color identity from Moxfield
       const colorIdentity = await getColorIdentityFromUrl(url)
-      
+
       const newDeck = await dataApi.createDeck({
         name,
         url,
         colorIdentity: colorIdentity || [],
         cards: []
       })
-      
+
       decks.value.push(newDeck)
       return newDeck
     } catch (error) {
